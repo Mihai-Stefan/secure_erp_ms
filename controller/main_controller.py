@@ -1,3 +1,6 @@
+import sys
+sys.path.append('./')
+
 from view import terminal as view
 from controller import crm_controller, sales_controller, hr_controller
 
@@ -35,3 +38,5 @@ def menu():
         except ValueError:
             view.print_error_message("Please enter a number!")
     view.print_message("Good-bye!")
+
+

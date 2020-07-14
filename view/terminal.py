@@ -1,3 +1,9 @@
+import os
+
+def cls(): 
+    os.system('cls' if os.name == 'nt' else 'clear') 
+
+
 def print_menu(title, list_options):
     """Prints options in standard menu format like this:
 
@@ -11,7 +17,15 @@ def print_menu(title, list_options):
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
     """
-    pass
+    cls()
+    menu_str = f"    {title}"
+    print(menu_str, '\n')
+    for counter, menu_item in enumerate(list_options):
+        print(f"    {counter}. {menu_item}")
+ 
+
+
+
 
 
 def print_message(message):
@@ -45,7 +59,7 @@ def print_table(table):
     Args:
         table: list of lists - the table to print out
     """
-    pass
+
 
 
 def get_input(label):
@@ -54,7 +68,8 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    pass
+    user_input = input(f"\n    {label} >  ")
+    return user_input
 
 
 def get_inputs(labels):
@@ -73,3 +88,11 @@ def print_error_message(message):
         message: str - the error message
     """
     pass
+
+
+'''
+print_table([['pF5v4wG_e_', 'Dr. Strangelove', 'strangelove@rgv453.grer', '1'], 
+['k0_JUq+8hk', 'Kim', 'supremeleader@dfs.vfsdfv', '0'], 
+['l4x__QmU8r', 'Unknown', '---', '0'], 
+['P7+5Ggza!n', 'Known', 'ping@me', '1']])
+'''
