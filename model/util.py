@@ -1,6 +1,7 @@
 import random
 import string
 import itertools
+import datetime
 
 
 def generate_id(number_of_small_letters=4,
@@ -37,3 +38,23 @@ for i in range(10):
                 number_of_special_chars=2,
                 allowed_special_chars=r"_+-!"))
 '''
+
+def check_month():
+    user_entry = user_entry.split('-', ' ')
+    for number in user_entry:
+        if number.isalpha() == True and number.lower() in MONTHS:
+            for month in MONTHS:
+                if number.lower() in month:
+                    number = MONTHS.index(month) + 1
+
+def get_date():
+    isValid=False
+    while not isValid:
+        userIn = input("\nType Date dd/mm/yy > ")
+        try:
+            d = datetime.datetime.strptime(userIn, "%d/%m/%y")
+            isValid=True
+        except:
+            print("Please try again!\n")
+    return str(d.date())
+

@@ -1,5 +1,6 @@
 import copy
 from model.util import *
+from model.util import get_date
 from view import terminal as view
 from model.data_manager import *
 from view.terminal import *
@@ -18,7 +19,10 @@ def add_employee():
     new_id = generate_id()
     new_employee.append(new_id)
     for element in HEADERS[1:]:
-        inf = get_input(element)
+        if element == HEADERS[2]:
+            inf = get_date()
+        else:
+            inf = get_input(element)
         new_employee.append(inf)
     hr_list.append(new_employee)
     list_employees()
