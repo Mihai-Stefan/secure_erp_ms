@@ -42,7 +42,28 @@ def delete_employee():
 
 
 def get_oldest_and_youngest():
-    view.print_error_message("Not implemented yet.")
+    birthdays = []
+    birthdays_sorted = []
+    birthday_dates = []
+    for i in range(len(hr_list)):
+        birthdays.append(hr_list[i][2])
+
+    for date in birthdays:
+        date_object = datetime.datetime.strptime(date, "%Y-%m-%d")
+        date_date = date_object.date()
+        birthday_dates.append(date_date)
+
+    birthday_dates.sort()
+
+    oldest = birthday_dates[0]
+    youngest = birthday_dates[-1]
+
+    for i in range(len(hr_list)):
+        if hr_list[i][2] == str(oldest):
+            print(f"{hr_list[i][1]} is the oldest employee")
+        if hr_list[i][2] == str(youngest):
+            print(f"{hr_list[i][1]} is the youngest employee")
+
 
 
 def get_average_age():
@@ -73,6 +94,7 @@ def run_operation(option):
         delete_employee()
     elif option == 5:
         get_oldest_and_youngest()
+        wait_enter()
     elif option == 6:
         get_average_age()
     elif option == 7:
