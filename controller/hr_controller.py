@@ -21,9 +21,11 @@ def add_employee():
     for element in HEADERS[1:]:
         if element == HEADERS[2]:
             inf = get_date()
-        elif element == HEADERS[4]:
-            message = "(insert numbers between 0 and 7)"
-            inf = check_if_number(HEADERS[4],message)    
+        elif element == HEADERS[4]: 
+            min = 0
+            max = 8
+            message = f"(insert numbers between {min} and {max})"
+            inf = check_if_number(HEADERS[4],min,max,message)    
         else:
             inf = get_input(element)
         new_employee.append(inf)
@@ -42,16 +44,8 @@ def delete_employee():
 
 
 def get_oldest_and_youngest():
-    birthdays = []
-    birthdays_sorted = []
-    birthday_dates = []
-    for i in range(len(hr_list)):
-        birthdays.append(hr_list[i][2])
-
-    for date in birthdays:
-        date_object = datetime.datetime.strptime(date, "%Y-%m-%d")
-        date_date = date_object.date()
-        birthday_dates.append(date_date)
+    
+    birthday_dates = list_birthdates()
 
     birthday_dates.sort()
 
@@ -67,7 +61,21 @@ def get_oldest_and_youngest():
 
 
 def get_average_age():
-    view.print_error_message("Not implemented yet.")
+    birthday_strings = list_separated_strings_birthdays()
+    sum_age = 0
+    for i in range(len(birthday_strings)):
+        YEAR = int(birthday_strings[i][0])
+        MONTH = int(birthday_strings[i][1])
+        DAY = int(birthday_strings[i][2])
+        age = calculate_age(datetime.date(YEAR,MONTH,DAY))
+        sum_age += age
+    age_average = sum_age / len(birthday_strings)
+    age_average = int(age_average) 
+    print(f"The average employee age is {age_average} years")
+
+
+
+    
 
 
 def next_birthdays():
@@ -97,6 +105,7 @@ def run_operation(option):
         wait_enter()
     elif option == 6:
         get_average_age()
+        wait_enter()
     elif option == 7:
         next_birthdays()
     elif option == 8:

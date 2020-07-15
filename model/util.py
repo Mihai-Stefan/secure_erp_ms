@@ -37,7 +37,6 @@ for i in range(10):
                 number_of_digits=2,
                 number_of_special_chars=2,
                 allowed_special_chars=r"_+-!"))
-'''
 
 def check_month():
     user_entry = user_entry.split('-', ' ')
@@ -47,23 +46,25 @@ def check_month():
                 if number.lower() in month:
                     number = MONTHS.index(month) + 1
 
+'''
+
 def get_date():
     isValid=False
     while not isValid:
-        userIn = input("\nType Date dd/mm/yyyy > ")
+        userIn = input("\nType Date yyyy/mm/dd > ")
         try:
-            d = datetime.datetime.strptime(userIn, "%d/%m/%Y")
+            d = datetime.datetime.strptime(userIn, "%Y/%m/%d")
             isValid = True
         except:
             print("Please try again!")
     return str(d.date())
 
-def check_if_number(n, message=""):
+def check_if_number(what_to_insert, min, max, message=""):
     isValid = False
     while not isValid:
-        userIn = input(f"\n    {n} {message} > ")
+        userIn = input(f"\n    {what_to_insert} {message} > ")
         if userIn.isdigit() == True:
-            if int(userIn) in range(8):
+            if int(userIn) in range(min, max):
                 isValid = True
 
         else:
