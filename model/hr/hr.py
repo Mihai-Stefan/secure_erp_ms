@@ -48,3 +48,4 @@ def calculate_age(birthdate):
     age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
     
     return age
+

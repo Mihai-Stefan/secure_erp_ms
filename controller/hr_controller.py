@@ -24,7 +24,7 @@ def add_employee():
         elif element == HEADERS[4]: 
             min = 0
             max = 8
-            message = f"(insert numbers between {min} and {max})"
+            message = f"(insert numbers between {min} and {max-1})"
             inf = check_if_number(HEADERS[4],min,max,message)    
         else:
             inf = get_input(element)
@@ -78,8 +78,28 @@ def get_average_age():
     
 
 
-def next_birthdays():
-    view.print_error_message("Not implemented yet.")
+def next_birthdays(number_of_days):
+    birthday_strings = list_separated_strings_birthdays()
+    upcoming_birthdays = []
+    today = datetime.date.today()
+    YEAR = int(today.year)
+    for i in range(len(birthday_strings)):    
+        MONTH = int(birthday_strings[i][1])
+        DAY = int(birthday_strings[i][2])
+        
+        birthday = datetime.date(YEAR, MONTH, DAY)
+        
+        days_difference = birthday - today
+        days_difference = days_difference.days
+
+        if 0 < days_difference <= number_of_days:
+            upcoming_birthdays.append([hr_list[i][1],hr_list[i][2]])
+    if len(upcoming_birthdays) != 0:
+        print(f"In the next {number_of_days} days the following are celebrating their birthday:")
+        for i in range(len(upcoming_birthdays)):
+            print(f"{upcoming_birthdays[i][0]} on {upcoming_birthdays[i][1]}")
+    else:
+        print(f"In the next {number_of_days} days, no one is celebrating their birthday")
 
 
 def count_employees_with_clearance():
@@ -107,7 +127,9 @@ def run_operation(option):
         get_average_age()
         wait_enter()
     elif option == 7:
-        next_birthdays()
+        target_days = 14
+        next_birthdays(target_days)
+        wait_enter()
     elif option == 8:
         count_employees_with_clearance()
     elif option == 9:
