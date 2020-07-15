@@ -1,13 +1,37 @@
-from model.crm import crm
+import copy
+from model.util import *
 from view import terminal as view
+from model.data_manager import *
+from view.terminal import *
 
 
+
+DATAFILE = "model/crm/crm.csv"
+HEADERS = ["id", "name", "email", "subscribed"]
+crm_list = (read_table_from_file(DATAFILE, separator=';'))
+
+
+    
 def list_customers():
-    view.print_error_message("Not implemented yet.")
+    table = crm_list
+    headers = HEADERS
+    cls()
+    print_table(table, headers)
 
 
 def add_customer():
-    view.print_error_message("Not implemented yet.")
+    list_customers()
+    new_customer = []
+    new_id = generate_id()
+    new_customer.append(new_id)
+    for element in HEADERS[1:]:
+        inf = get_input(element)
+        new_customer.append(inf)
+    crm_list.append(new_customer)
+    list_customers()
+    write_table_to_file(DATAFILE, crm_list, separator=';')
+    wait_enter()
+
 
 
 def update_customer():
@@ -15,7 +39,8 @@ def update_customer():
 
 
 def delete_customer():
-    view.print_error_message("Not implemented yet.")
+    list_customers()
+    del_index = get_input()
 
 
 def get_subscribed_emails():
@@ -25,6 +50,7 @@ def get_subscribed_emails():
 def run_operation(option):
     if option == 1:
         list_customers()
+        wait_enter()
     elif option == 2:
         add_customer()
     elif option == 3:
@@ -58,3 +84,5 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+
+
