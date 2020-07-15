@@ -17,4 +17,3 @@ DATAFILE = "model/hr/hr.csv"
 HEADERS = ["Id", "Name", "Date of birth", "Department", "Clearance"]
 
 hr_list = (read_table_from_file(DATAFILE, separator=';'))
-hr_list.insert(0, HEADERS)

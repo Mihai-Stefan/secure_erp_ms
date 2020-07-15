@@ -50,11 +50,26 @@ def check_month():
 def get_date():
     isValid=False
     while not isValid:
-        userIn = input("\nType Date dd/mm/yy > ")
+        userIn = input("\nType Date dd/mm/yyyy > ")
         try:
-            d = datetime.datetime.strptime(userIn, "%d/%m/%y")
-            isValid=True
+            d = datetime.datetime.strptime(userIn, "%d/%m/%Y")
+            isValid = True
         except:
-            print("Please try again!\n")
+            print("Please try again!")
     return str(d.date())
+
+def check_if_number(n, message=""):
+    isValid = False
+    while not isValid:
+        userIn = input(f"\n    {n} {message} > ")
+        if userIn.isdigit() == True:
+            if int(userIn) in range(8):
+                isValid = True
+
+        else:
+            print("Please insert a number! ")
+            wait_enter()
+
+    return str(userIn)
+
 

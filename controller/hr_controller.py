@@ -21,6 +21,9 @@ def add_employee():
     for element in HEADERS[1:]:
         if element == HEADERS[2]:
             inf = get_date()
+        elif element == HEADERS[4]:
+            message = "(insert numbers between 0 and 7)"
+            inf = check_if_number(HEADERS[4],message)    
         else:
             inf = get_input(element)
         new_employee.append(inf)

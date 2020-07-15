@@ -1,5 +1,5 @@
 import os
-
+import copy 
 def cls(): 
     os.system('cls' if os.name == 'nt' else 'clear') 
 
@@ -60,8 +60,9 @@ def print_table(table, headers):
     Args:
         table: list of lists - the table to print out
     """
-    printable_table = table
-    
+    cls()
+    printable_table = copy.deepcopy(table)
+    printable_table.insert(0, headers)
     length_elements = [[len(x) for x in printable_table[i]] for i in range(len(printable_table))]
     off_set = 6
     longest_element = [0 for x in range(len(headers))]
