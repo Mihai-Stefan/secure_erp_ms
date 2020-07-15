@@ -28,14 +28,14 @@ def print_menu(title, list_options):
 
 
 
-
 def print_message(message):
     """Prints a single message to the terminal.
 
     Args:
         message: str - the message
     """
-    pass
+
+    print('\n', message, '\n')
 
 
 def print_general_results(result, label):
@@ -44,7 +44,9 @@ def print_general_results(result, label):
     lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
     (like "@label \n  @key1: @value1; @key2: @value2")
     """
-    pass
+    print('\n', label, '\n')
+    for element in result:
+        print('    ', element)
 
 
 # /--------------------------------\
@@ -101,7 +103,12 @@ def get_inputs(labels):
     Args:
         labels: list - the list of the labels to be displayed before each prompt
     """
-    pass
+    inputs_list = []
+    for label in labels:
+        user_input = input(label,' > ')
+        input_list.append(user_input)
+    return input_list
+        
 
 
 def print_error_message(message):
@@ -110,12 +117,8 @@ def print_error_message(message):
     Args:
         message: str - the error message
     """
-    pass
-
-
-'''
-print_table([['pF5v4wG_e_', 'Dr. Strangelove', 'strangelove@rgv453.grer', '1'], 
-['k0_JUq+8hk', 'Kim', 'supremeleader@dfs.vfsdfv', '0'], 
-['l4x__QmU8r', 'Unknown', '---', '0'], 
-['P7+5Ggza!n', 'Known', 'ping@me', '1']])
-'''
+    msg_length = len(message)
+    print('\n')
+    print('=' * msg_length)
+    print(message)
+    print('=' * msg_length, '\n')
