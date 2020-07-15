@@ -9,6 +9,12 @@ Data table structure:
 """
 
 from model import data_manager, util
+from model.data_manager import *
+from model.util import *
+
 
 DATAFILE = "model/hr/hr.csv"
 HEADERS = ["Id", "Name", "Date of birth", "Department", "Clearance"]
+
+hr_list = (read_table_from_file(DATAFILE, separator=';'))
+hr_list.insert(0, HEADERS)

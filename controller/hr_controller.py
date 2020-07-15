@@ -1,13 +1,29 @@
-from model.hr import hr
+import copy
+from model.util import *
 from view import terminal as view
+from model.data_manager import *
+from view.terminal import *
+from model.hr.hr import *
+
 
 
 def list_employees():
-    view.print_error_message("Not implemented yet.")
+    cls()
+    print_table(hr_list, HEADERS)
 
 
 def add_employee():
-    view.print_error_message("Not implemented yet.")
+    list_employees()
+    new_employee = []
+    new_id = generate_id()
+    new_employee.append(new_id)
+    for element in HEADERS[1:]:
+        inf = get_input(element)
+        new_employee.append(inf)
+    hr_list.append(new_employee)
+    list_employees()
+    write_table_to_file(DATAFILE, hr_list, separator=';')
+    wait_enter()
 
 
 def update_employee():
@@ -41,6 +57,7 @@ def count_employees_per_department():
 def run_operation(option):
     if option == 1:
         list_employees()
+        wait_enter()
     elif option == 2:
         add_employee()
     elif option == 3:
