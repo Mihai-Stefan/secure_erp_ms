@@ -8,12 +8,14 @@ from model.hr.hr import *
 
 
 
+
 def list_employees():
     cls()
     print_table(hr_list, HEADERS)
 
 
 def add_employee():
+    global message
     list_employees()
     new_employee = []
     new_id = generate_id()
@@ -24,8 +26,7 @@ def add_employee():
         elif element == HEADERS[4]: 
             min = 0
             max = 8
-            message = f"(insert numbers between {min} and {max-1})"
-            inf = check_if_number(HEADERS[4],min,max,message)    
+            inf = check_if_number(HEADERS[4],min,max)    
         else:
             inf = get_input(element)
         new_employee.append(inf)
@@ -102,8 +103,17 @@ def next_birthdays(number_of_days):
         print(f"In the next {number_of_days} days, no one is celebrating their birthday")
 
 
-def count_employees_with_clearance():
-    view.print_error_message("Not implemented yet.")
+def count_employees_with_clearance(clearance_level):
+    
+    number_of_employees_cleared = 0
+    for i in range(len(hr_list)):
+        if int(hr_list[i][4]) <= clearance_level:
+            number_of_employees_cleared += 1
+
+    return number_of_employees_cleared
+
+    
+    
 
 
 def count_employees_per_department():
@@ -131,7 +141,11 @@ def run_operation(option):
         next_birthdays(target_days)
         wait_enter()
     elif option == 8:
-        count_employees_with_clearance()
+        SAY = "Input clearance level under which you want to check"
+        clearance_level = int(check_if_number(SAY, 0, 8))
+        number = count_employees_with_clearance(clearance_level)
+        print(f"There are a total of {number} employees with clearance level {clearance_level} or lower")
+        wait_enter()
     elif option == 9:
         count_employees_per_department()
     elif option == 0:

@@ -59,10 +59,10 @@ def get_date():
             print("Please try again!")
     return str(d.date())
 
-def check_if_number(what_to_insert, min, max, message=""):
+def check_if_number(what_to_insert, min, max):
     isValid = False
     while not isValid:
-        userIn = input(f"\n    {what_to_insert} {message} > ")
+        userIn = input(f"\n    {what_to_insert} (insert numbers between {min} and {max-1}): > ")
         if userIn.isdigit() == True:
             if int(userIn) in range(min, max):
                 isValid = True
