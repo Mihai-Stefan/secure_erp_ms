@@ -27,4 +27,18 @@ def generate_id(number_of_small_letters=4,
 def wait_enter():
     input("\npress enter to continue")
 
+def check_if_number(what_to_insert, min, max):
+    isValid = False
+    while not isValid:
+        userIn = input(f"\n    {what_to_insert} (insert numbers between {min} and {max-1}): > ")
+        if userIn.isdigit() == True:
+            if int(userIn) in range(min, max):
+                isValid = True
+
+        else:
+            print("Please insert a number! ")
+            wait_enter()
+
+    return str(userIn)
+
 
