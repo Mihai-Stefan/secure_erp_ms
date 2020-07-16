@@ -30,9 +30,9 @@ def wait_enter():
 def get_date():
     isValid=False
     while not isValid:
-        userIn = input("\nType Date yyyy/mm/dd > ")
+        userIn = input("\nType Date yyyy-mm-dd > ")
         try:
-            d = datetime.datetime.strptime(userIn, "%Y/%m/%d")
+            d = datetime.datetime.strptime(userIn, "%Y-%m-%d")
             isValid = True
         except:
             print("Please try again!")
