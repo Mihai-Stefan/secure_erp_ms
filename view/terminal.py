@@ -44,7 +44,22 @@ def print_general_results(result, label):
     lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
     (like "@label \n  @key1: @value1; @key2: @value2")
     """
-    pass
+    if isinstance(result, int):
+        print(f"{label}: {result}")
+    if isinstance(result, float):
+        result = "{:2f}".format(result)
+        print(f"{label}: {result}")
+    if isinstance(result, (tuple,list)):
+        print(f"{label}: ")
+        for i in range(len(result)-1):
+            print(result[i],end = '; ')
+        print(result[len(result)-1])
+    if isinstance(result, dict):
+        print(f"{label}: \n")
+        for i in range(len(result)-1):
+            print(str(list(result.items())[i][0]) + ": " + str(list(result.items())[i][1]), end = "; ")
+        print(str(list(result.items())[len(result)-1][0]) + ": " + str(list(result.items())[len(result)-1][1]))
+
 
 
 # /--------------------------------\
@@ -54,6 +69,7 @@ def print_general_results(result, label):
 # |--------|------------|----------|
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
+
 def print_table(table, headers):
     """Prints tabular data like above.
 
@@ -61,9 +77,9 @@ def print_table(table, headers):
         table: list of lists - the table to print out
     """
     cls()
-    prinable_table = copy.deepcopy(table)
-    prinable_table.insert(0, headers)
-    length_elements = [[len(x) for x in prinable_table[i]] for i in range(len(prinable_table))]
+    printable_table = copy.deepcopy(table)
+    printable_table.insert(0, headers)
+    length_elements = [[len(x) for x in printable_table[i]] for i in range(len(printable_table))]
     off_set = 6
     longest_element = [0 for x in range(len(headers))]
     for len_element in length_elements:
@@ -71,15 +87,14 @@ def print_table(table, headers):
             if int(char) > longest_element[index]:
                 longest_element[index] = int(char) + off_set
     chart = ['-' * int(x) for x in longest_element]
-    print(f'      /{"-".join(chart)}\ ')
-    print('      ', end = '')
-    for index, employee in enumerate(prinable_table):
+    print(f'/{"-".join(chart)}\ ')
+    for index, employee in enumerate(printable_table):
         string = ""
         for i in range(len(employee)):
             string += "|" + employee[i].center(longest_element[i])
         print(string + '|')
-        if index == len(prinable_table) - 1:
-            print(f'      \{"-".join(chart)}/')
+        if index == len(printable_table) - 1:
+            print(f'\{"-".join(chart)}/')
         else:
             print(f'      |{"|".join(chart)}|')   
             print(f"{'{:4}'.format(index + 1)}", end ='  ')
@@ -112,10 +127,3 @@ def print_error_message(message):
     """
     pass
 
-
-'''
-print_table([['pF5v4wG_e_', 'Dr. Strangelove', 'strangelove@rgv453.grer', '1'], 
-['k0_JUq+8hk', 'Kim', 'supremeleader@dfs.vfsdfv', '0'], 
-['l4x__QmU8r', 'Unknown', '---', '0'], 
-['P7+5Ggza!n', 'Known', 'ping@me', '1']])
-'''

@@ -9,6 +9,43 @@ Data table structure:
 """
 
 from model import data_manager, util
+from model.data_manager import *
+from model.util import *
+
 
 DATAFILE = "model/hr/hr.csv"
 HEADERS = ["Id", "Name", "Date of birth", "Department", "Clearance"]
+
+hr_list = (read_table_from_file(DATAFILE, separator=';'))
+
+def list_birthdates():
+    birthdays = []
+    birthdays_sorted = []
+    birthday_dates = []
+    for i in range(len(hr_list)):
+        birthdays.append(hr_list[i][2])
+
+    for date in birthdays:
+        date_object = datetime.datetime.strptime(date, "%Y-%m-%d")
+        date_date = date_object.date()
+        birthday_dates.append(date_date)
+
+    return birthday_dates
+
+def list_separated_strings_birthdays():
+    birthdays = []
+    birthdays_separated = []
+    for i in range(len(hr_list)):
+        birthdays.append(hr_list[i][2])
+    for j in birthdays:
+        birthday = j.split("-")
+        birthdays_separated.append(birthday)
+    
+    return birthdays_separated
+
+def calculate_age(birthdate):
+    today = datetime.date.today()
+    age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+    
+    return age
+
