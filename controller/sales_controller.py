@@ -39,6 +39,8 @@ def add_transaction():
     new_transaction.append(new_id)
     for element in HEADERS[1:]:
         inf = get_input(element)
+        if element == "Price":
+            inf = "{:10.2f}".format(float(inf))
         new_transaction.append(inf)
     sales_list.append(new_transaction)
     list_transactions()
@@ -57,6 +59,8 @@ def update_transaction():
         if inf == '':
             update_transaction.append(sales_list[upd_index][k])
         else:
+            if element == "Price":
+                inf = "{:10.2f}".format(float(inf))
             update_transaction.append(inf)
         k += 1
     sales_list[upd_index] = update_transaction

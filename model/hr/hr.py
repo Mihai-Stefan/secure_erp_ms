@@ -20,8 +20,9 @@ hr_list = (read_table_from_file(DATAFILE, separator=';'))
 
 ID = 0   # avoid magic numbers
 NAME = 1
-EMAIL = 2
-SUBSRIBED = 3
+BIRTH_DAY = 2
+DEPARTMENT = 3
+CLEARANCE = 4
 
 def list_birthdates():
     birthdays = []

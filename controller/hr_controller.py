@@ -18,12 +18,12 @@ def add_employee():
     new_id = generate_id()
     new_employee.append(new_id)
     for element in HEADERS[1:]:
-        if element == HEADERS[2]:
+        if element == HEADERS[NAME]:
             inf = get_date()
-        elif element == HEADERS[4]: 
+        elif element == HEADERS[CLEARANCE]: 
             min = 0
             max = 8
-            inf = check_if_number(HEADERS[4],min,max)    
+            inf = check_if_number(HEADERS[CLEARANCE],min,max)    
         else:
             inf = get_input(element)
         new_employee.append(inf)
@@ -101,7 +101,7 @@ def next_birthdays(number_of_days):
         days_difference = days_difference.days
 
         if 0 < days_difference <= number_of_days:
-            upcoming_birthdays.append([hr_list[i][1],hr_list[i][2]])
+            upcoming_birthdays.append([hr_list[i][NAME],hr_list[i][BIRTH_DAY]])
     if len(upcoming_birthdays) != 0:
         print(f"In the next {number_of_days} days the following are celebrating their birthday:")
         for i in range(len(upcoming_birthdays)):
@@ -114,7 +114,7 @@ def count_employees_with_clearance(clearance_level):
     
     number_of_employees_cleared = 0
     for i in range(len(hr_list)):
-        if int(hr_list[i][4]) <= clearance_level:
+        if int(hr_list[i][CLEARANCE]) <= clearance_level:
             number_of_employees_cleared += 1
 
     return number_of_employees_cleared
@@ -126,19 +126,13 @@ def count_employees_with_clearance(clearance_level):
 def count_employees_per_department():
     employees_by_department = {}
     for i in range(len(hr_list)):
-        if not hr_list[i][3] in employees_by_department:
-            employees_by_department[hr_list[i][3]] = 1
+        if not hr_list[i][DEPARTMENT] in employees_by_department:
+            employees_by_department[hr_list[i][DEPARTMENT]] = 1
         else:
-            employees_by_department[hr_list[i][3]] += 1
+            employees_by_department[hr_list[i][DEPARTMENT]] += 1
 
     return employees_by_department
         
-        
-    '''    
-        employees_by_department[hr_list[3]] = 0
-    for i in range(len(hr_list)):
-        employees_by_department[hr_list[3]] += 1
-    '''
 
 def run_operation(option):
     if option == 1:
