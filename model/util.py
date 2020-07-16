@@ -27,6 +27,17 @@ def generate_id(number_of_small_letters=4,
 def wait_enter():
     input("\npress enter to continue")
 
+def get_date():
+    isValid=False
+    while not isValid:
+        userIn = input("\nType Date yyyy/mm/dd > ")
+        try:
+            d = datetime.datetime.strptime(userIn, "%Y/%m/%d")
+            isValid = True
+        except:
+            print("Please try again!")
+    return str(d.date())
+
 def check_if_number(what_to_insert, min, max):
     isValid = False
     while not isValid:
