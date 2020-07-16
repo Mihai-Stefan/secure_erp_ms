@@ -7,7 +7,9 @@ Data table structure:
     - subscribed (int): Is subscribed to the newsletter? 1: yes, 0: no
 """
 
-from model import data_manager, util
+
+# from model import data_manager, util
+
 
 
 DATAFILE = "model/crm/crm.csv"
