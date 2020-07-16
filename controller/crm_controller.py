@@ -29,7 +29,14 @@ def add_customer():
     new_id = generate_id()
     new_customer.append(new_id)
     for element in HEADERS[1:]:
-        inf = get_input(element)
+        if element == 'subscribed':             # verify answer 'y'
+            inf = get_input('Subscribed ?   y/n ').lower()
+            if inf == 'y' or inf == '1':
+                inf = '1'
+            else:
+                inf = '0'
+        else:
+            inf = get_input(element)
         new_customer.append(inf)
     crm_list.append(new_customer)
     list_customers()
@@ -45,7 +52,17 @@ def update_customer():
     update_customer.append(crm_list[upd_index][ID])
     k = 1
     for element in HEADERS[1:]:
-        inf = get_input(element)
+        if element == 'subscribed':             # verify answer 'y'
+            inf = get_input('Subscribed ?   y/n ').lower()
+            if inf == 'y' or inf == '1':
+                inf = '1'
+            else:
+                if inf == '':
+                    inf = ''
+                else:
+                    inf = '0'
+        else:
+            inf = get_input(element)
         if inf == '':
             update_customer.append(crm_list[upd_index][k])
         else:

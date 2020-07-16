@@ -2,6 +2,7 @@ from model.util import *
 from view import terminal as view
 from model.data_manager import *
 from view.terminal import *
+from controller.crm_controller import *
 
 
 DATAFILE = "model/sales/sales.csv"
@@ -25,6 +26,20 @@ def format_sales_list(sales_list):   # format price as float with two decimals
 sales_list = format_sales_list(sales_list)
 
 
+def add_or_select_sales_customer():
+    customers_number = len(crm_list)
+    ok_input = False
+    while not ok_input:
+        choice = get_input(f'Select an existing customer (1 to {customers_number}) or add a new one  > "n" or ENTER ')
+        if choice in ['n', 'N', '']:
+            add_customer()
+            new_crm_list = (read_table_from_file("model/crm/crm.csv", separator=';'))
+            return new_crm_list[-1][0]   # return new customer_id
+
+        if int(choice) in range(1, customers_number+1):
+            return crm_list[int(choice)-1][0]   # return customer_id from existing ones
+
+
 def list_transactions():
     table = sales_list
     headers = HEADERS
@@ -33,11 +48,14 @@ def list_transactions():
 
 
 def add_transaction():
-    list_transactions()
+    list_customers()
+    print_message("    ^^^ CUSTOMERS LIST ^^^")
     new_transaction = []
     new_id = generate_id()
     new_transaction.append(new_id)
-    for element in HEADERS[1:]:
+    customer_id = add_or_select_sales_customer()
+    new_transaction.append(customer_id)
+    for element in HEADERS[2:]:
         inf = get_input(element)
         if element == "Price":
             inf = "{:10.2f}".format(float(inf))
