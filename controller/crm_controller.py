@@ -41,7 +41,6 @@ def add_customer():
 def update_customer():
     list_customers()
     upd_index = int(get_input("Line number of record to update"))-1
-    #aici update
     update_customer = []
     update_customer.append(crm_list[upd_index][ID])
     k = 1

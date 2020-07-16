@@ -27,13 +27,5 @@ def generate_id(number_of_small_letters=4,
 def wait_enter():
     input("\npress enter to continue")
 
-'''
-### test
 
-for i in range(10):
-    print(generate_id(number_of_small_letters=4,
-                number_of_capital_letters=2,
-                number_of_digits=2,
-                number_of_special_chars=2,
-                allowed_special_chars=r"_+-!"))
-'''
+

@@ -66,7 +66,7 @@ def print_table(table, headers):
     prinable_table = copy.deepcopy(table)
     prinable_table.insert(0, headers)
     length_elements = [[len(x) for x in prinable_table[i]] for i in range(len(prinable_table))]
-    off_set = 6
+    off_set = 10
     longest_element = [0 for x in range(len(headers))]
     for len_element in length_elements:
         for index, char in enumerate(len_element):
