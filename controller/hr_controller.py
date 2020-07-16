@@ -105,7 +105,7 @@ def next_birthdays(number_of_days):
     if len(upcoming_birthdays) != 0:
         print(f"In the next {number_of_days} days the following are celebrating their birthday:")
         for i in range(len(upcoming_birthdays)):
-            print(f"{upcoming_birthdays[i][0]} on {upcoming_birthdays[i][1]}")
+            print(f" {'{:12s}'.format(upcoming_birthdays[i][0])} on {upcoming_birthdays[i][1]}")
     else:
         print(f"In the next {number_of_days} days, no one is celebrating their birthday")
 
