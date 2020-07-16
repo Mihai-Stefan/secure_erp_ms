@@ -70,36 +70,6 @@ def print_general_results(result, label):
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
 
-def print_table(table, headers):
-    """Prints tabular data like above.
-
-    Args:
-        table: list of lists - the table to print out
-    """
-    cls()
-    prinable_table = copy.deepcopy(table)
-    prinable_table.insert(0, headers)
-    length_elements = [[len(x) for x in prinable_table[i]] for i in range(len(prinable_table))]
-    off_set = 10
-    longest_element = [0 for x in range(len(headers))]
-    for len_element in length_elements:
-        for index, char in enumerate(len_element):
-            if int(char) > longest_element[index]:
-                longest_element[index] = int(char) + off_set
-    chart = ['-' * int(x) for x in longest_element]
-    print(f'      /{"-".join(chart)}\ ')
-    print('      ', end = '')
-    for index, employee in enumerate(prinable_table):
-        string = ""
-        for i in range(len(employee)):
-            string += "|" + employee[i].center(longest_element[i])
-        print(string + '|')
-        if index == len(prinable_table) - 1:
-            print(f'      {"-".join(chart)}/')
-        else:
-            print(f'      |{"|".join(chart)}|')
-            print(f"{'{:4}'.format(index + 1)}", end ='  ')
-
 
 def print_table(table, headers):
     """Prints tabular data like above.

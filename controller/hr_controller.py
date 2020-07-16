@@ -8,15 +8,12 @@ from model.hr.hr import *
 
 
 
-
 def list_employees():
     cls()
     print_table(hr_list, HEADERS)
 
 
 def add_employee():
-    global message
-    list_employees()
     new_employee = []
     new_id = generate_id()
     new_employee.append(new_id)
@@ -31,18 +28,28 @@ def add_employee():
             inf = get_input(element)
         new_employee.append(inf)
     hr_list.append(new_employee)
-    list_employees()
     write_table_to_file(DATAFILE, hr_list, separator=';')
-    wait_enter()
 
 
 def update_employee():
-    view.print_error_message("Not implemented yet.")
-
+    upd_index = int(get_input("Line number of record to update: "))-1
+    update_customer = []
+    update_customer.append(hr_list[upd_index][ID])
+    k = 1
+    for element in HEADERS[1:]:
+        inf = get_input(element)
+        if inf == '':
+            update_customer.append(hr_list[upd_index][k])
+        else:
+            update_customer.append(inf)
+        k+=1
+    hr_list[upd_index] = update_customer
+    write_table_to_file(DATAFILE, hr_list, separator=';')
 
 def delete_employee():
-    view.print_error_message("Not implemented yet.")
-
+    del_index = int(get_input("Line number of record to delete"))
+    del hr_list[del_index-1]
+    write_table_to_file(DATAFILE, hr_list, separator=';')
 
 def get_oldest_and_youngest():
     
@@ -138,11 +145,20 @@ def run_operation(option):
         list_employees()
         wait_enter()
     elif option == 2:
+        list_employees()
         add_employee()
+        list_employees()
+        wait_enter()
     elif option == 3:
+        list_employees()
         update_employee()
+        list_employees()
+        wait_enter()
     elif option == 4:
+        list_employees()
         delete_employee()
+        list_employees()
+        wait_enter()
     elif option == 5:
         get_oldest_and_youngest()
         wait_enter()

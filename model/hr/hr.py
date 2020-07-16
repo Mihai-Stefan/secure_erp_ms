@@ -18,6 +18,11 @@ HEADERS = ["Id", "Name", "Date of birth", "Department", "Clearance"]
 
 hr_list = (read_table_from_file(DATAFILE, separator=';'))
 
+ID = 0   # avoid magic numbers
+NAME = 1
+EMAIL = 2
+SUBSRIBED = 3
+
 def list_birthdates():
     birthdays = []
     birthdays_sorted = []
