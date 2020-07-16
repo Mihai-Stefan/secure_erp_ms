@@ -18,7 +18,7 @@ def add_employee():
     new_id = generate_id()
     new_employee.append(new_id)
     for element in HEADERS[1:]:
-        if element == HEADERS[NAME]:
+        if element == HEADERS[BIRTH_DAY]:
             inf = get_date()
         elif element == HEADERS[CLEARANCE]: 
             min = 0
