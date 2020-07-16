@@ -43,7 +43,22 @@ def print_general_results(result, label):
     lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
     (like "@label \n  @key1: @value1; @key2: @value2")
     """
-    pass
+    if isinstance(result, int):
+        print(f"{label}: {result}")
+    if isinstance(result, float):
+        result = "{:2f}".format(result)
+        print(f"{label}: {result}")
+    if isinstance(result, (tuple,list)):
+        print(f"{label}: ")
+        for i in range(len(result)-1):
+            print(result[i],end = '; ')
+        print(result[len(result)-1])
+    if isinstance(result, dict):
+        print(f"{label}: \n")
+        for i in range(len(result)-1):
+            print(str(list(result.items())[i][0]) + ": " + str(list(result.items())[i][1]), end = "; ")
+        print(str(list(result.items())[len(result)-1][0]) + ": " + str(list(result.items())[len(result)-1][1]))
+
 
 
 # /--------------------------------\

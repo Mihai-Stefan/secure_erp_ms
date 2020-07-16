@@ -117,8 +117,21 @@ def count_employees_with_clearance(clearance_level):
 
 
 def count_employees_per_department():
-    view.print_error_message("Not implemented yet.")
+    employees_by_department = {}
+    for i in range(len(hr_list)):
+        if not hr_list[i][3] in employees_by_department:
+            employees_by_department[hr_list[i][3]] = 1
+        else:
+            employees_by_department[hr_list[i][3]] += 1
 
+    return employees_by_department
+        
+        
+    '''    
+        employees_by_department[hr_list[3]] = 0
+    for i in range(len(hr_list)):
+        employees_by_department[hr_list[3]] += 1
+    '''
 
 def run_operation(option):
     if option == 1:
@@ -147,7 +160,9 @@ def run_operation(option):
         print(f"There are a total of {number} employees with clearance level {clearance_level} or lower")
         wait_enter()
     elif option == 9:
-        count_employees_per_department()
+        NumberOfEmployees = count_employees_per_department()
+        print_general_results(NumberOfEmployees, "Here are the number of employees by department")
+        wait_enter()
     elif option == 0:
         return
     else:
