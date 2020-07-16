@@ -28,14 +28,14 @@ def print_menu(title, list_options):
 
 
 
-
 def print_message(message):
     """Prints a single message to the terminal.
 
     Args:
         message: str - the message
     """
-    pass
+
+    print('\n', message, '\n')
 
 
 def print_general_results(result, label):
@@ -116,7 +116,12 @@ def get_inputs(labels):
     Args:
         labels: list - the list of the labels to be displayed before each prompt
     """
-    pass
+    inputs_list = []
+    for label in labels:
+        user_input = input(label,' > ')
+        inputs_list.append(user_input)
+    return inputs_list
+        
 
 
 def print_error_message(message):
@@ -125,5 +130,8 @@ def print_error_message(message):
     Args:
         message: str - the error message
     """
-    pass
-
+    msg_length = len(message)
+    print('\n')
+    print('=' * msg_length)
+    print(message)
+    print('=' * msg_length, '\n')

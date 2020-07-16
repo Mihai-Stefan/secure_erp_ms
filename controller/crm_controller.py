@@ -9,6 +9,10 @@ from view.terminal import *
 DATAFILE = "model/crm/crm.csv"
 HEADERS = ["id", "name", "email", "subscribed"]
 crm_list = (read_table_from_file(DATAFILE, separator=';'))
+ID = 0   # avoid magic numbers
+NAME = 1
+EMAIL = 2
+SUBSRIBED = 3
 
 
     
@@ -35,16 +39,43 @@ def add_customer():
 
 
 def update_customer():
-    view.print_error_message("Not implemented yet.")
+    list_customers()
+    upd_index = int(get_input("Line number of record to update"))-1
+    update_customer = []
+    update_customer.append(crm_list[upd_index][ID])
+    k = 1
+    for element in HEADERS[1:]:
+        inf = get_input(element)
+        if inf == '':
+            update_customer.append(crm_list[upd_index][k])
+        else:
+            update_customer.append(inf)
+        k+=1
+    crm_list[upd_index] = update_customer
+    list_customers()
+    write_table_to_file(DATAFILE, crm_list, separator=';')
+    wait_enter()
 
 
 def delete_customer():
     list_customers()
-    del_index = get_input()
+    del_index = int(get_input("Line number of record to delete"))
+    del crm_list[del_index-1]
+    list_customers()
+    write_table_to_file(DATAFILE, crm_list, separator=';')
+    wait_enter()
+
 
 
 def get_subscribed_emails():
-    view.print_error_message("Not implemented yet.")
+    cls()
+    subscribed_emails = []
+    for id, name, email, subscribe in crm_list:
+        if int(subscribe) == 1:
+            subscribed_emails.append(email)
+    print_general_results(subscribed_emails, "List of subscribed emails:")
+    wait_enter()
+
 
 
 def run_operation(option):
