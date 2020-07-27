@@ -2,6 +2,7 @@ import random
 import string
 import itertools
 import datetime
+from model.data_manager import *
 
 
 def generate_id(number_of_small_letters=4,
@@ -24,8 +25,10 @@ def generate_id(number_of_small_letters=4,
     random.shuffle(id)
     return ''.join(id)
 
+
 def wait_enter():
     input("\npress enter to continue")
+
 
 def get_date():
     isValid=False
@@ -37,6 +40,7 @@ def get_date():
         except:
             print("Please try again!")
     return str(d.date())
+
 
 def check_if_number(what_to_insert, min, max):
     isValid = False
@@ -51,5 +55,11 @@ def check_if_number(what_to_insert, min, max):
             wait_enter()
 
     return str(userIn)
+
+
+def delete_record_from_db(filename, module_list, record_index):
+    del module_list[record_index]
+    write_table_to_file(filename, module_list, separator=';')
+
 
 

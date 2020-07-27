@@ -1,18 +1,7 @@
-import copy
 from model.util import *
 from view import terminal as view
-from model.data_manager import *
 from view.terminal import *
-
-
-
-DATAFILE = "model/crm/crm.csv"
-HEADERS = ["id", "name", "email", "subscribed"]
-crm_list = (read_table_from_file(DATAFILE, separator=';'))
-ID = 0   # avoid magic numbers
-NAME = 1
-EMAIL = 2
-SUBSRIBED = 3
+from model.crm.crm import *
 
 
     
@@ -27,7 +16,7 @@ def add_customer():
     list_customers()
     new_customer = []
     new_id = generate_id()
-    new_customer.append(new_id)
+    new_customer.append(new_id)  # the list which will be added as a record in datafile
     for element in HEADERS[1:]:
         if element == 'subscribed':             # verify answer 'y'
             inf = get_input('Subscribed ?   y/n ').lower()
@@ -76,10 +65,9 @@ def update_customer():
 
 def delete_customer():
     list_customers()
-    del_index = int(get_input("Line number of record to delete"))
-    del crm_list[del_index-1]
+    del_index = int(get_input("Line number of record to delete")) - 1
+    delete_record_from_db(DATAFILE, crm_list, del_index)
     list_customers()
-    write_table_to_file(DATAFILE, crm_list, separator=';')
     wait_enter()
 
 
