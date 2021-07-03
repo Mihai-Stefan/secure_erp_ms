@@ -78,7 +78,7 @@ def get_subscribed_emails():
     for id, name, email, subscribe in crm_list:
         if int(subscribe) == 1:
             subscribed_emails.append(email)
-    print_general_results(subscribed_emails, "List of subscribed emails:")
+    print_general_results(subscribed_emails, "List of subscribed emails")
     wait_enter()
 
 
