@@ -149,7 +149,7 @@ def sum_transactions_between():
             transaction_sum += float(price)
     list_transactions()
     formated_transaction_sum = "{:10.2f}".format(transaction_sum)
-    print_message(f"  The total sum fot transaction betveen {initial_date} and {final_date} > {formated_transaction_sum}")
+    print_message(f"  The total sum for transaction betveen {initial_date} and {final_date} > {formated_transaction_sum}")
     wait_enter()
 
 
