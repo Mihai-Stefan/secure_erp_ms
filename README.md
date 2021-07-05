@@ -74,22 +74,22 @@ The data is kept in CSV files [client request].
 
 Main menu and exit from app:
 
-![00_main](\images\00_main.jpg)
+![00_main](images\00_main.jpg)
 
 
 
 CRM ( Customer Relationship Management )  module:
 
-![01_crm](\images\01_crm.jpg)
+![01_crm](images\01_crm.jpg)
 
 
 
 Sales module:
 
-![02_sales](\images\02_sales.jpg)
+![02_sales](images\02_sales.jpg)
 
 
 
 HR ( Human Resources ) module:
 
-![03_hr](\images\03_hr.jpg)
+![03_hr](images\03_hr.jpg)
