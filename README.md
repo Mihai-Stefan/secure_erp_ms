@@ -80,16 +80,16 @@ Main menu and exit from app:
 
 CRM ( Customer Relationship Management )  module:
 
-![01_crm](images\01_crm.jpg)
+![01_crm](https://github.com/Mihai-Stefan/secure_erp_ms/blob/main/images\01_crm.jpg)
 
 
 
 Sales module:
 
-![02_sales](images\02_sales.jpg)
+![02_sales](https://github.com/Mihai-Stefan/secure_erp_ms/blob/main/images\02_sales.jpg)
 
 
 
 HR ( Human Resources ) module:
 
-![03_hr](images\03_hr.jpg)
+![03_hr](https://github.com/Mihai-Stefan/secure_erp_ms/blob/main/images\03_hr.jpg)
