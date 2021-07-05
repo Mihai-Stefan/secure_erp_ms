@@ -74,7 +74,7 @@ The data is kept in CSV files [client request].
 
 Main menu and exit from app:
 
-![00_main](images\00_main.jpg)
+![00_main](https://github.com/Mihai-Stefan/secure_erp_ms/blob/main/images/00_main.jpg)
 
 
 
