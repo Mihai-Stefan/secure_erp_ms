@@ -86,7 +86,7 @@ CRM ( Customer Relationship Management )  module:
 
 Sales module:
 
-![02_sales](images\02_sales.jpg)
+![02_sales](.\images\02_sales.jpg)
 
 
 
